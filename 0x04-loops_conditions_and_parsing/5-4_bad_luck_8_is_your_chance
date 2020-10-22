@@ -10,7 +10,7 @@ do
 			continue
 	elif [ $i == 4 ]
 		then
-			echo "back luck"
+			echo "bad luck"
 			continue
 	else
 		echo "Holberton School"
