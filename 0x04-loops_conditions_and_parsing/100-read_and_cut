@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#read files
 file="/etc/passwd"
 while  IFS= read -r line
 do
