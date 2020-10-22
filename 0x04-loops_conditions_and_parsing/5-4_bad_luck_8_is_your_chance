@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 # print 10 times holb Sch... and good/bad look
-i=1
-while [ $i -lt 11 ]
+i=0
+while [ $i -lt 10 ]
 do
 	i=$((i + 1))
-	if [ $i == 9 ]
+	if [ $i == 8 ]
 		then
 			echo "good luck"
 			continue
-	elif [ $i == 5 ]
+	elif [ $i == 4 ]
 		then
 			echo "back luck"
 			continue
