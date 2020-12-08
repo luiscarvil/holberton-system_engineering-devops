@@ -1,0 +1,153 @@
+# A Record - maps a domain name to the IP (version 4)
+	     of the computer hosting the domain.
+# CNAME record - Canonical Name Record
+	Type of resource record in the Domain Name System (DNS)
+	that maps one domain name
+
+	NAME                    TYPE   VALUE
+	--------------------------------------------------
+	bar.example.com.        CNAME  foo.example.com.
+	foo.example.com.        A      192.0.2.23
+
+# MX Record
+	specifies the mail server, acepting email messages
+	on behald of a domain name. It's a resource in DNS
+
+	Domain			TTL   Class    Type  Priority      Host
+	--------------------------------------------------
+	example.com.		1936	IN	MX	10         onemail.example.com.
+	example.com.		1936	IN	MX	10         twomail.example.com.
+
+# TXT Record
+	Type resource record in the DNS used to provide the ability
+	to associate arbitrary text with a host or other name.
+	* A domain may have multiple TXT records associated with it.
+## Format
+	As unstructured text, organisations can use the TXT string
+	in any way they define, for example:
+	```
+	example.com.   IN   TXT   "This domain name is reserved for use in documentation"
+	```
+	* RFC 1464 defines a structured format that can be used to define attributes
+	  and their values in a single record
+	```
+	host.widgets.com.   IN   TXT   "printer=lpr5"
+	sam.widgets.com.    IN   TXT   "favorite drink=orange juice"
+	```
+# DNS
+** link cartoon https://howdns.works/
+
+technique of load balancing Round robin DNS
+* Many web servers and internet services use multiple DNS A
+  records with the same name
+
+send list of IP addresses of several servers with same hostname,
+## example
+    foo.dnsknowledge.com – 202.54.1.2
+    foo.dnsknowledge.com – 202.54.1.3
+    return 2 diferent IP addresses with the same domain name
+
+## Round Robin DNS Usage
+1. Load distribution
+2. Load balancing.
+3. Fault-tolerance service.
+
+## Example Round Robin DNS
+	```
+	host -t google.com
+	```
+	with the last command we can see diferent addresses
+	to google.com IPs
+
+# What's an NS Record - (name servers records)
+	delegates a subdomain to a set of name servers.
+	the TLD(Top-level domain) authorities place NS records for domain in the
+	TLD name servers pointing to us.
+	```
+	dnsimple.com. 172800 IN NS ns1.dnsimple.com.
+	dnsimple.com. 172800 IN NS ns2.dnsimple.com.
+	dnsimple.com. 172800 IN NS ns3.dnsimple.com.
+	dnsimple.com. 172800 IN NS ns4.dnsimple.com.
+	```
+# What's an SOA record?
+	An SOA Start of Authority - record at the cutover
+	point where the domain is delegated from its parent domain.
+
+## Example SOA record:
+	```
+	ns1.dnsimple.com admin.dnsimple.com 2013022001 86400 7200 604800 300
+	```
+	includes the following details:
+	* The primary name server for the domain, which is ns1.dnsimple.com
+		or the first name server in the vanity name server list
+	* The responsible party for the domain: admin.dnsimple.com
+	* A timestamp that changes whenever you update your domain.
+	* The number of seconds before a failed refresh should be retried.
+	* The upper limit in seconds before a zone is considered no longer
+		 authoritative.
+	* The negative result TTL (for example, how long a resolver should
+		consider a negative result for a subdomain to be valid before retrying).
+
+# CI/CD
+	(Continuous Integration/Continuous Deployment)
+
+	Shipping the code:
+		Capistrano, Fabric
+	Encapsulating the code
+		Docker, Packer
+	Testing the code
+		Jenkins, CircleCi, Travis
+	Measuring the code
+		Datadog, Newrelic, Wavefront
+
+# Docker
+	first pull a Docker image and run a container.
+	docker ps
+	Note that docker command will pull the Ubuntu docker container
+	image from the Internet and run it. I let you look at the meaning
+	of the flags using the command ```docker run --help```, the main idea is
+	that it keeps the container up and running.
+	* docker exec - execute a command
+	example - docker exec -i e1fc0d4bbb5d hostname
+	* docker exec -ti - connect to docker container
+	example - docker exec -ti e1fc0d4bbb5d /bin/bash
+	* docker stop - stop a container
+
+# Web Stack debugging
+## Test and verify assumptions
+	ask a set of questions to find an issues.
+	Example: if you isntalled a web server and it isn't serving a page
+	when browsing the IP, can you ask:
+
+	* Is the web server started? - You can check using the service manager, also double check by 	checking process list.
+	* On what port should it listen? - Check your web server configuration
+	* Is it actually listening on this port? - netstat -lpdn - run as root or sudo so that you 	can see the process for each listening port
+	* It is listening on the correct server IP? - netstat is also your friend here
+	* Is there a firewall enabled?
+	* Have you looked at logs? - usually in /var/log and tail -f is your friend
+	* Can I connect to the HTTP port from the location I am browsing from? - curl is your friend
+
+·················································
+# overview of the machine starte
+	* w - show server uptime continuously running
+	      which users are connected to the servers
+	      load average of the srver health
+	* history - show which command were previously run by users
+	* top - show what is corrently running on this server
+		order by CPU, memory utilization and catch
+		htop - more pretty information
+	* df  - show disk utilization
+	* netstat - what port and IP is listening on
+		    what processes are using sockets
+		    netstat -lpn on Ubuntu
+	* ps axf - view all running processes along with their child processes in a tree format
+
+# DevOps
+	
+
+
+Ref: CNAME + https://en.wikipedia.org/wiki/CNAME_record
+     A Rec + https://support.dnsimple.com/articles/a-record/
+     DNS   + https://www.dnsknowledge.com/whatis/round-robin-dns/
+     NS    + https://support.dnsimple.com/articles/ns-record/
+     SOA   + https://support.dnsimple.com/articles/soa-record/
