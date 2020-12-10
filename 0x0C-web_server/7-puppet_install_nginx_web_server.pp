@@ -11,4 +11,5 @@ exec {'/usr/bin/env sed -i "/listen 80 default_server;/a rewrite ^/redirect_me h
 
 service { 'nginx':
 ensure  => running,
+require => Package['nginx'],
 }
