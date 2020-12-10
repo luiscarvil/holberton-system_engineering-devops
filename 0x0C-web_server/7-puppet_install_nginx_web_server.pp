@@ -6,9 +6,7 @@ ensure => installed,
 file { '/var/www/html/index.html':
 content => 'Holberton School',
 }
-exec {'enable firewall nginx':
-command => "ufw allow 'Nginx HTTP'",
-path => '/usr/bin:/bin:/usr/sbin',
+exec {"/usr/bin/env ufw allow 'Nginx HTTP'":
 }
 
 file_line { 'redirect_me, 301':
