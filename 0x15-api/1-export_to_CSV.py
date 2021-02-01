@@ -2,8 +2,8 @@
 """
 send data from a cvs file and create
 """
-import requests
 import csv
+import requests
 from sys import argv
 
 if __name__ == "__main__":
