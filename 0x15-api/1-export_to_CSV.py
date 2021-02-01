@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     req_todos = requests.get(url_todos, params={'userId': employee_id}).json()
     name_users = (requests.get(
-        url_users, params={'id': employee_id}).json())[0].get('name')
+        url_users, params={'id': employee_id}).json())[0].get('username')
     filename = employee_id + ".csv"
     with open(filename, mode='w') as file_csv:
         writer = csv.writer(file_csv, delimiter=',', quotechar='"',
