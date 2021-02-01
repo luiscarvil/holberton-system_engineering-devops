@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-send data from a cvs file and create
+send data from a json file and create the file
 """
 import csv
 import json
