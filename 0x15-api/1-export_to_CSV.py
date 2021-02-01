@@ -3,7 +3,6 @@
 send data from a cvs file and create
 """
 import requests
-import json
 import csv
 from sys import argv
 
