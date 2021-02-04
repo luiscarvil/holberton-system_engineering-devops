@@ -2,10 +2,10 @@
 """
 list all the hot titles in json file from URL
 """
+import requests
 
 
 def top_ten(subreddit):
-    import requests
     url_req = requests.get("https://www.reddit.com/r/{}.json".format(
         subreddit), headers={"User-Agent": "new_user_agent 1.0"})
     if url_req.status_code != 200:
