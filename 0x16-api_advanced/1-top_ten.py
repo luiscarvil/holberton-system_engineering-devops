@@ -1,4 +1,4 @@
-#!/Usr/bin/python3
+#!/usr/bin/python3
 """
 list all the hot titles in json file from URL
 """
